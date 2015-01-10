@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metas Basicos
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Comercializadora Crismag S.A DE C.V.</title>
+	<meta name="description" content="Calidad en nuestros productos ">
+	<meta name="author" content="Edgar Hernández García">
+	
+    <!-- Metas especificaciones para Moviles
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- se cargan los CSS
+  ================================================== -->
+	<link rel="stylesheet" href="css/zerogrid.css">
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/responsiveslides.css" />
+	<link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>
+</head>
+<body>
+<!--------------Header-------------- -->
+<header>
+	<div class="wrap-header zerogrid">
+		<div id="logo"><a href="#"><img src="./images/logo-cris-mag.png"/></a></div>
+		<div class="social">
+			<ul>
+				<li><a href="#" class="left"><img src="./images/social/facebook.png" /></a></li>
+			    <li><a href="#" class="left"><img src="./images/social/twitter.png" /></a></li>
+				
+			</ul>
+		</div>
+		<nav>
+			<div class="wrap-nav">
+				<div class="menu">
+					<ul>
+						<li class="current"><a href="index.html">Home</a></li>
+						<li><a href="quienes_somos.html">Quienes somos</a></li>
+						<li><a href="sucursales.html">Sucursales</a></li>
+						<li><a href="catalagos.html">Catálagos</a></li>
+					</ul>
+				</div>
+				
+				<div class="minimenu"><div>MENU</div>
+					<select onchange="location=this.value">
+						<option></option>
+						<option value="index.html">Home</option>
+						<option value="quienes_somos.html">Quienes somos</option>
+						<option value="sucursales.html">Sucursales</option>
+						<option value="catalagos.html">Catálagos</option>
+					</select>
+				</div>
+			</div>
+		</nav>
+	</div>
+</header>
+
+<div class="featured">
+	<div class="wrap-featured zerogrid">
+		<div class="slider">
+			<div class="rslides_container">
+				<ul class="rslides" id="slider">
+					<li><img src="images/slider/botanas.jpg"/></li>
+					<li><img src="images/slider/chile_2.jpg"/></li>
+					<li><img src="images/slider/chiles_secos.jpg"/></li>
+					<li><img src="images/slider/semillas.jpg"/></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--------------Content-------------- -->
+<section id="content">
+	<div class="wrap-content zerogrid">
+		
+		<div class="row block01"><h2>Comercializadora <a>Crismag </a>S.A DE C.V.</h2>
+		<p>Te ofrece los mejores precios competitivo y productos de calidad.</p></div>
+		<div class=divider></div>
+		
+		<div class="row block02">
+				<div class="col-1-3">
+				<div class="wrap-col">
+					<a href="#"><h2><span>E</span>species</h2></a>
+					<p>Laurel, Orégano, Pimienta, Tomillo, Anis, Ajo, Azafran, Canela, Comino, etc.</p>
+				</div>
+			</div>
+			<div class="col-1-3">
+				<div class="wrap-col">
+					<a href="#"><h2><span>C</span>hiles secos</h2></a>
+					<p>Mulato, Ancho, de Árbol Seco, Guajillo, Pasilla.</p>
+				</div>
+			</div>
+			<div class="col-1-3">
+				<div class="wrap-col">
+					<a href="#"><h2><span>S</span>emillas</h2></a>
+					<p>Alpiste, Calabaza, Cilantro, Maiz, Tomate, Pepino, Sandia, etc.</p>
+				</div>
+			</div>
+		
+			<div class="col-1-3">
+				<div class="wrap-col">
+					<a href="#"><h2><span>A</span>limentos naturista</h2></a>
+					<p> </p>
+				</div>
+			</div>
+			<div class="col-1-3">
+				<div class="wrap-col">
+					<a href="#"><h2><span>A</span>rticulos de limpieza</h2></a>
+					<p>Cloro, Pino, Fabuloso, Ace, Escobas, Trapeadores, Fibras, etc.</p>
+				</div>
+			</div>
+						<div class="col-1-3">
+				<div class="wrap-col">
+					<a href="#"><h2><span>D</span>esechables</h2></a>
+					<p>Cucharas, Vasos, Platos, Serbilletas, etc.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--------------Footer------------- -->
+<footer>
+	<div class="wrap-footer">
+		<div class="row">
+			<div class="col-1-2 centrar">
+				<div class="heading"><h2>Contacto</h2></div>
+					<div class="content">
+						<ul>
+							<li>Av. Periférico Carlos Pellicer Cámara, Central de Abastos Bodega 24 y 25, CP: 86108, Villahermosa, Tab. Mex.</li>
+							<li>Teléfono : 01 993 315 8046</li>
+							<li>Email : info@crismag.com</li>
+						</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="copyright">
+		<p>Copyright © 2015 -  Crismag  <a target="_blank" href="download/Aviso_privacidad.pdf"> Aviso de Privacidad</a></p>
+	</div>
+</footer>
+<!-- Se cargan los JS -->
+    <script src="js/jquery.min.js"></script>
+	<script src="js/responsiveslides.js"></script>
+	<script>
+		$(function () {
+		  $("#slider").responsiveSlides({
+			auto: true,
+			pager: false,
+			nav: true,
+			speed: 500,
+			maxwidth: 962,
+			namespace: "centered-btns"
+		  });
+		});
+	</script>
+</body>
+</html>
