@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>
+Consulta de Clientes
+</title>
+
+{% include "base_administrador.html" %}
+
+
+{% block admin %}
+
+<div class="layout"> <!-- inicio de toda la pagina desde del body-->
+  <!-- Navbar
+    ================================================== -->
+{% if user.is_staff or request.session.tipous == 1 %}
+  {% include 'headeradmin.html' %}
+  {% include 'menuizquierdoadmin.html' %}
+{% else %}
+  {% include 'headercap.html' %}
+  {% include 'menuizquierdocap.html' %}
+{% endif %}
+
+
+  <div class="main-wrapper">
+    <div class="container-fluid">
+
+{% if messages %}
+  {% for message in messages %}
+      <div {% if message.tags %} class="alert alert-{{ message.tags }}"  {% endif %}   >
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+        <i class="icon-exclamation-sign"></i>
+        {{ message }}   
+      </div>
+  {% endfor %}    
+{% endif %}
+<!-- Aqui van los roidfluid -->
+{% if user.is_staff %}
+  <div class="row-fluid ">
+        <div class="span12">
+          <div class="primary-head">
+            <h3 class="page-header"> 
+              Clientes
+            </h3>  
+          </div>
+          <ul class="breadcrumb">
+            <li>
+              <a href="/administrador/" class="icon-home"></a>
+              <span class="divider ">
+                <i class="icon-angle-right"></i>
+              </span>
+            </li>
+            <li class="active">Clientes activos en el sistema</li>
+          </ul>
+        </div>
+      </div>
+      {% else %}
+     <div class="row-fluid ">
+        <div class="span12">
+          <div class="primary-head">
+            <h3 class="page-header"> 
+              Clientes
+            </h3>  
+          </div>
+          <ul class="breadcrumb">
+            <li>
+              <a href="/administrador/" class="icon-home"></a>
+              <span class="divider ">
+                <i class="icon-angle-right"></i>
+              </span>
+            </li>
+            <li class="active">Clientes activos en el sistema</li>
+          </ul>
+        </div>
+      </div>
+{% endif %}
+      <div class="row-fluid ">
+        <div class="span12">
+          <div class="content-widgets gray">
+            <div class="widget-head blue clearfix">
+              <h3 class="pull-left">Búsqueda de Clientes</h3>
+            </div>
+            <div class="widget-container">
+              <table class="table data-grid table-bordered paper-table tbl-serach responsive">
+                <thead>
+                  <tr>
+                    <th class="center"> Nombre / Razon social</th>
+                    <th class="center"> RFC </th>
+                    <th class="center"> Dirección </th>
+                    <th class="center"> Usuario </th>
+                    <th class="center"> Acceso </th>
+                    <th class="center"> Acción </th>
+                  </tr>
+                </thead>
+                <tbody>
+                {%  for c in clientes  %}
+                  <tr>
+                    <td>
+                      
+		                   {{c.Nombre_Razons}}
+                     
+                         
+                    </td>
+                    <td>{{c.rfc}}</td>
+                    <td class="center"> {{c.Paisc}} - {{c.Estadoc}} - {{c.Localidadc}} </td>
+                    <td class="center">
+                      
+                      {{c.Usuario.User.username}}
+                    
+                    </td>
+            
+                      <td class="center">
+                        <a href="/propiedades-cliente/{{c.id}}/">
+                          <button class="btn btn-round btn-success" title="Entrar">
+                            <span>
+                              <i class="icon-cog"></i>
+                            </span>
+                          </button>
+                        </a>
+                      </td>
+                      <td class="center">
+                        <div class="btn-toolbar row-action">
+                        <div class="btn-group">
+
+
+
+                          <a href="/actualizar-cliente/{{c.id}}/">
+                          <button class="btn btn-info" title="Editar">
+                            <i class="icon-edit"></i>
+                          </button>
+                          {%  if  c.Usuario.User.is_active  %}  
+                          <a href="/suspender-cliente/{{c.id}}/" onclick='return confirm("Realmente desea suspender el cliente?");'>
+                          <button class="btn btn-danger" title="Suspender">
+                            <i class=" icon-remove-sign"></i>
+                          </button>
+                          </a>
+                          {% endif %}
+
+                        
+                          {%  if not c.Usuario.User.is_active  %}
+                          <a href="/activar-cliente/{{c.id}}/">
+                          <button class="btn btn-success" title="Approve">
+                            <i class=" icon-ok"></i>
+                          </button>
+                          </a>
+                          {% endif %}  
+ 
+  
+
+                        
+                        </div>
+                        </div>
+
+
+                      </td>
+                  </tr>
+                   
+                {%  endfor %}
+
+                </tbody>
+                <tfoot>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% include 'footer.html' %}
+  <div class="scroll-top">
+    <a href="#" class="tip-top" title="Go Top"><i class="icon-double-angle-up"></i></a>
+  </div>
+</div>
+
+{% endblock %}

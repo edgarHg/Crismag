@@ -1,0 +1,139 @@
+  <div class="leftbar leftbar-close clearfix">
+
+
+    <div class="admin-info clearfix">
+      
+      {% if user.perfil.image %}
+       
+<img height="50" width="50" alt="User" src="{{MEDIA_URL}}{{user.perfil.image}}">
+       
+      {% else%}
+      <div class="admin-thumb">
+       
+          <i class="icon-user"></i>
+       
+      </div>
+      {% endif %}  
+
+      <div class="admin-meta">
+        <ul>
+          <li class="admin-username"> {{user.first_name}}</li>
+          <li><a href="/cambiar-contrasena/">Cambiar contraseña</a></li>
+          {% if user.perfil.user_id%}
+                    <li>
+            <a href="/logout_user/"><i class="icon-off"></i> Cerrar</a></li>
+          {% else %}
+          <li>
+            <a href="/logout_user/"><i class="icon-off"></i> Cerrar</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="left-nav clearfix">
+      <div class="left-primary-nav">
+        <ul id="myTab">
+
+          <li {% if activoc == True or activocc == True %} class="active" {% endif %}>
+            <a href="#clientes" class="icon-user" title="Clientes"></a>
+          </li>
+
+          <li {% if activop %} class="active" {% endif %}>
+            <a href="#main" class="icon-user-md " title="Personal"></a>
+          </li>
+
+          <li {% if activodoc %} class="active" {% endif %}>
+            <a href="#doc" class="icon-file-alt" title="Archivos"></a>
+          </li>
+
+          
+        </ul>
+      </div>
+      <div class="responsive-leftbar">
+        <i class="icon-list"></i>
+      </div>
+      <div class="left-secondary-nav tab-content">
+
+        <div class=" 
+        {% if activoc == True or activocc == True or activoa == True%} 
+        tab-pane active 
+        {% else %}
+        tab-pane
+        {% endif %}
+        "
+        id="clientes">
+
+
+          <h4 class="side-head">Clientes</h4>
+
+
+          <ul id="nav" class="accordion-nav">
+
+            <li {% if activoc %} class="active" {% endif %}>
+              <a href="/registro-cliente/"><i class="icon-plus-sign"></i> Registrar
+                <span>Datos personales</span>
+              </a>
+            </li>
+             <li {% if activocc %} class="active" {% endif %}>
+              <a href="/consultar-cliente-general/"><i class="icon-search"></i> Consultar
+                <span>Datos del Cliente</span>
+              </a>
+            </li>
+
+
+          </ul>
+
+        </div>
+
+      <div class=" 
+        {% if activop %} 
+        tab-pane active 
+        {% else %}
+        tab-pane
+        {% endif %}
+        "
+        id="main">
+
+
+          <h4 class="side-head">Personal</h4>
+          
+          <ul class="metro-sidenav clearfix">
+            <li>
+              <a href="/fperso" class="brown"><i class="icon-plus-sign"></i><span>Registrar</span></a>
+            </li>
+            <li>
+              <a href="/consultar-personal/" class="orange"><i class="icon-search"></i><span>Consultar</span></a>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class=" 
+        {% if activodoc %} 
+        tab-pane active 
+        {% else %}
+        tab-pane
+        {% endif %}
+        "
+        id="doc">
+
+
+          <h4 class="side-head">Lista de Productos</h4>
+          
+          <ul class="metro-sidenav clearfix">
+            <li>
+              <a href="/uploaddoc-form/" class="brown"><i class="icon-plus-sign"></i><span>Subir</span></a>
+            </li>
+            <li>
+              <a href="/consultar-archivos/" class="orange"><i class="icon-search"></i><span>Consultar</span></a>
+            </li>
+
+          </ul>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>

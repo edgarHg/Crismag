@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>
+
+Administracion del sitio
+</title>
+
+{% include "base_administrador.html" %}
+
+{% block admin %}
+
+
+<div class="layout"> <!-- inicio de toda la pagina desde del body-->
+  <!-- Navbar
+    ================================================== -->
+ {% include 'headeradmin.html' %}
+
+
+{% include 'menuizquierdoadmin.html' %}
+
+
+
+  <div class="main-wrapper">
+    <div class="container-fluid">
+
+
+
+
+<!-- Aqui van los roidfluid -->
+     <div class="row-fluid ">
+        <div class="span12">
+          <div class="board-widgets gray">
+            <div class="board-widgets-head clearfix">
+              <h4 class="pull-left">Ventas del Mes de: {{mes}} del {% now "Y"%}     <B>¡FELICIDADES "{{vasesor}}"!</B></h4> 
+              <a href="#" class="widget-settings"><i class="icon-group"></i></a>
+            </div>
+            <div class="board-widgets-content">
+              <div class="row-fluid">
+                <div class="span12">
+                  <div class="widget-container">
+                    <div id="visitors-chart">
+
+
+                      <div id="chart2" style="width: 100%;height:300px; text-align: center; margin:0 auto;">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+  <div class="copyright">
+    <p>
+       &copy; 2013 westilian
+    </p>
+  </div>
+  <div class="scroll-top">
+    <a href="#" class="tip-top" title="Go Top"><i class="icon-double-angle-up"></i></a>
+  </div>
+</div>
+
+{% endblock %}

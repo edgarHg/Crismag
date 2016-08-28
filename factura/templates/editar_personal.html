@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>
+
+Edición de personal
+</title>
+
+{% include "base_administrador.html" %}
+
+{% block admin %}
+
+
+
+<div class="layout"> <!-- inicio de toda la pagina desde del body-->
+  <!-- Navbar
+    ================================================== -->
+ {% if user.is_staff or request.session.tipous == 1 %}
+  {% include 'headeradmin.html' %}
+  {% include 'menuizquierdoadmin.html' %}
+{% endif %}
+
+ {% if request.session.tipous == 2 %}
+  {% include 'headergerente.html' %}
+  {% include 'menuizquierdogerente.html' %}
+{% endif %}
+
+{% if request.session.tipous == 3 %}
+  {% include 'headerasesor.html' %}
+  {% include 'menuizquierdoasesor.html' %}
+{% endif %}
+
+{% if request.session.tipous == 4 %}
+  {% include 'headercaja.html' %}
+  {% include 'menuizquierdocaja.html' %}
+{% endif %}
+
+{% if request.session.tipous == 5 %}
+  {% include 'headerecurso.html' %}
+  {% include 'menuizquierdorecurso.html' %}
+{% endif %}
+
+{% if request.session.tipous == 6 %}
+    {% include 'headercontraloria.html' %}
+    {% include 'menuizquierdocontraloria.html' %}
+  {% endif %}
+
+
+  <div class="main-wrapper">
+    <div class="container-fluid">
+
+{% if messages %}
+  {% for message in messages %}
+      <div {% if message.tags %} class="alert alert-{{ message.tags }}"  {% endif %}   >
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+        <i class="icon-exclamation-sign"></i>
+        {{ message }}   
+      </div>
+  {% endfor %}    
+{% endif %}
+
+
+
+
+
+<!-- Aqui van los roidfluid -->
+<div class="row-fluid">
+        <div class="span12">
+          <div class="content-widgets gray">
+            <div class="widget-head blue">
+              <h3> Edición de personal</h3>
+            </div>
+            <div class="widget-container">
+              <div class="form-container grid-form form-background">
+
+
+                <form name="signupForm" class="form-horizontal left-align" id="signupForm" method="POST" action="">
+                  {% csrf_token %}
+                   
+                  <div class="control-group">
+                    <label class="control-label">Nombre</label>
+                    <div class="controls">
+                      {{u.first_name}}
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">Apellidos</label>
+                    <div class="controls">
+                      {{u.last_name}}
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <label class="control-label">Email</label>
+                    <div class="controls">
+                     {{u.email}}
+                    </div>
+                  </div>
+
+                 
+
+                <div class="control-group">
+                  <label class="control-label">Sexo</label>
+                  <div class="controls">
+                    {{p.sexo}}             
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label">fecha de nacimiento</label>
+                  <div class="controls">
+                   <div id="datetimepicker4" class="input-append">
+                    {{p.fecha_nacimiento}}
+                      <span class="add-on">
+                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                      </span>    
+                    </div>         
+                  </div>
+                </div>
+                
+                <div class="control-group">
+                  <label class="control-label">Telefono</label>
+                  <div class="controls">
+                    {{p.telefono}}             
+                  </div>
+                </div>
+
+
+
+
+                <div class="control-group">
+                    <label class="control-label">País</label>
+                    <div class="controls">
+                      {{p.pais}}
+                    </div>
+                  </div>
+                 <div class="control-group">
+                  <label class="control-label">Estado</label>
+                  <div class="controls">
+
+                    {{p.estado}}
+              
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label">Ciudad</label>
+                  <div class="controls">
+
+               {{p.localidad}}
+     
+                  </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Dirección</label>
+                    <div class="controls">
+                      {{p.direccion}}
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <label class="control-label">Código postal</label>
+                    <div class="controls">
+                      {{p.codigo_postal}}
+                    </div>
+                  </div>
+
+                <div class="control-group">
+                  <label class="control-label">Agencia/Sucursal</label>
+                  <div class="controls">
+                    {{p.agencia}}             
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label">Puesto</label>
+                  <div class="controls">
+                    {{p.puesto}}             
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label">Nacionalidad</label>
+                  <div class="controls">
+                    {{p.nacionalidad}}             
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label">Talla</label>
+                  <div class="controls">
+                    {{p.talla}}             
+                  </div>
+                </div>
+
+                {% if chap.chaperon %}
+
+                <div class="control-group">
+                  <label class="control-label">Número de pasaporte</label>
+                  <div class="controls">
+                    <input id="numpasaportep" class="span12" type="text" maxlength="30" name="numpasaportep"></input>        
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label">Vencimiento</label>
+                  <div class="controls">
+                   <div id="datetimepicker8" class="input-append">
+                    <input id="vencimientop" type="text" data-format="yyyy-MM-dd" name="vencimientop" placeholder="yyyy/mm/dd"></input>
+                      <span class="add-on">
+                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                      </span>    
+                    </div>         
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label">Ingles</label>
+                  <div class="controls">
+                      <select class="span12" name="ingle" id="ingle">
+                        <option value="" selected="selected">---------</option> 
+                        <option value="50%">50%</option>
+                        <option value="70%">70%</option> 
+                        <option value="100%">100%</option>
+                      </select> 
+                  </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Otro Idioma</label>
+                <div class="controls">
+                    <input id="oidio" class="span12" type="text" maxlength="200" name="oidio"></input>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Filmación y Fotografía</label>
+                <div class="controls">
+<input id="filvi" class="span12" type="text" maxlength="200" name="filvi"></input>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Porgrama</label>
+                <div class="controls">
+
+                  <select class="span12" name="programa" id="programa">
+                        <option value="" selected="selected">---------</option>
+                        {% for p in programa %}
+                        <option value="{{p.id}}">{{p.nombre}}</option>
+                       {% endfor %}
+                      </select>
+
+                </div>
+              </div>
+
+
+                {% endif %}
+
+                <div class="control-group">
+                  <label class="control-label">Seleccion el tipo de usuario</label>
+                  <div class="controls">
+                  {{p.id_tipo_usuario}} 
+                  </div>
+                </div>
+
+
+
+                
+
+                  <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% include 'footer.html' %}
+  <div class="scroll-top">
+    <a href="#" class="tip-top" title="Go Top"><i class="icon-double-angle-up"></i></a>
+  </div>
+</div>
+
+{% endblock %}

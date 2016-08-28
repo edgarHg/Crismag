@@ -1,0 +1,40 @@
+ {% if adminclint %}
+   <div class="navbar navbar-inverse top-nav">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="/cliente/" title="Inicio">
+        <img src="{{STATIC_URL}}images/logo-cris-mag.png" width="80" height="30" style="margin-bottom:5px;" alt="Cris mag">
+       </a>
+        <div class="nav-collapse">
+          <ul class="nav">
+
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+ {% else %}
+
+
+ <div class="navbar navbar-inverse top-nav">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="/capturista/" title="Inicio">
+        <img src="{{STATIC_URL}}images/logo-cris-mag.png" width="80" height="30" style="margin-bottom:5px;" alt="Cris mag">
+       </a>
+        <div class="nav-collapse">
+          <ul class="nav">
+
+
+            
+
+
+
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  {% endif %}

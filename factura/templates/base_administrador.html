@@ -1,0 +1,288 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Admin Panel Template">
+<meta name="author" content="Westilian: Kamrujaman Shohel">
+<!-- styles -->
+<link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
+<link href="{{STATIC_URL}}css/jquery.gritter.css" rel="stylesheet">
+<link href="{{STATIC_URL}}css/bootstrap-responsive.css" rel="stylesheet">
+<link rel="stylesheet" href="{{STATIC_URL}}css/font-awesome.css">
+
+<link href="{{STATIC_URL}}css/tablecloth.css" rel="stylesheet">
+<link href="{{STATIC_URL}}css/responsive-tables.css" rel="stylesheet">
+
+<link href="{{STATIC_URL}}css/chosen.css" rel="stylesheet">
+<link href="{{STATIC_URL}}css/styles.css" rel="stylesheet">
+
+
+<link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+<!--fav and touch icons -->
+<link rel="shortcut icon" href="{{STATIC_URL}}ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{STATIC_URL}}ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{STATIC_URL}}ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{STATIC_URL}}ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="{{STATIC_URL}}ico/apple-touch-icon-57-precomposed.png">
+<!--============ javascript ===========-->
+
+<script src="{{STATIC_URL}}js/jquery.js"></script>
+
+
+
+<script src="{{STATIC_URL}}js/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="{{STATIC_URL}}js/bootstrap.js"></script>
+<script src="{{STATIC_URL}}js/bootstrap-fileupload.js"></script>
+<script src="{{STATIC_URL}}js/accordion.nav.js"></script>
+
+<script src="{{STATIC_URL}}js/jquery.tagsinput.js"></script>
+<script src="{{STATIC_URL}}js/chosen.jquery.js"></script>
+<script src="{{STATIC_URL}}js/bootstrap-colorpicker.js"></script>
+
+<script src="{{STATIC_URL}}js/bootstrap-datetimepicker.min.js"></script>
+
+<script src="{{STATIC_URL}}js/date.js"></script>
+<script src="{{STATIC_URL}}js/daterangepicker.js"></script>
+
+<script src="{{STATIC_URL}}js/custom.js"></script>
+<script src="{{STATIC_URL}}js/respond.min.js"></script>
+<script src="{{STATIC_URL}}js/ios-orientationchange-fix.js"></script>
+
+<script src="{{STATIC_URL}}js/jquery.validate.js"></script>
+
+<script src="{{STATIC_URL}}js/responsive-tables.js"></script>
+<script src="{{STATIC_URL}}js/jquery.dataTables.js"></script>
+<script src="{{STATIC_URL}}js/jquery.tablecloth.js"></script>
+<script src="{{STATIC_URL}}js/ZeroClipboard.js"></script>
+<script src="{{STATIC_URL}}js/dataTables.bootstrap.js"></script>
+<script src="{{STATIC_URL}}js/TableTools.js"></script>
+<script src="{{STATIC_URL}}js/jquery.collapsible.js"></script>
+<script src="{{STATIC_URL}}js/excanvas.js"></script>
+<script src="{{STATIC_URL}}js/jquery.tablesorter.js"></script>
+
+
+<script src="{{STATIC_URL}}js/jquery.flot.js"></script>
+<script src="{{STATIC_URL}}js/jquery.flot.selection.js"></script>
+<script src="{{STATIC_URL}}js/jquery.flot.pie.js"></script>
+<script src="{{STATIC_URL}}js/jquery.flot.stack.js"></script>
+<script src="{{STATIC_URL}}js/jquery.flot.time.js"></script>
+<script src="{{STATIC_URL}}js/jquery.flot.tooltip.js"></script>
+<script src="{{STATIC_URL}}js/jquery.flot.resize.js"></script>
+
+<script src="{{STATIC_URL}}js/jquery.gritter.js"></script>
+
+<script src="{{STATIC_URL}}js/stepy.jquery.js"></script>
+
+<link href="{{STATIC_URL}}site_media/spinner.css" rel="stylesheet" type="text/css" />
+
+<!-- link de las validacion con jquery realizado por Ing. Elder Lopez -->
+<script src="{{STATIC_URL}}js/validanumeroletras.js"></script>
+<script src="{{STATIC_URL}}js/validacion.js"></script>
+
+<!-- fin del link de las validacion con jquery realizado por Ing. Elder Lopez -->
+<!-- ventanas madales -->
+<script src="{{STATIC_URL}}js/bootbox.js"></script>
+
+
+<!-- grafica -->
+
+<link class="include" rel="stylesheet" type="text/css" href="{{STATIC_URL}}js/grafica/jquery.jqplot.min.css" />
+
+<script class="include" type="text/javascript" src="{{STATIC_URL}}js/grafica/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}syntaxhighlighter/scripts/shCore.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}syntaxhighlighter/scripts/shBrushXml.min.js"></script>
+<!-- Additional plugins go here -->
+
+<script class="include" type="text/javascript" src="{{STATIC_URL}}js/grafica/jqplot.barRenderer.min.js"></script>
+<script class="include" type="text/javascript" src="{{STATIC_URL}}js/grafica/jqplot.pieRenderer.min.js"></script>
+<script class="include" type="text/javascript" src="{{STATIC_URL}}js/grafica/jqplot.categoryAxisRenderer.min.js"></script>
+<script class="include" type="text/javascript" src="{{STATIC_URL}}js/grafica/jqplot.pointLabels.min.js"></script>
+
+
+
+
+
+
+{% if graf and request.session.tipous == 1 %}
+
+
+
+    <script class="code" type="text/javascript">$(document).ready(function(){
+        $.jqplot.config.enablePlugins = true;
+        var s1 = [
+        {% for pr in i %}    
+            {{pr.cliente}},
+        {% endfor %} 
+        ];
+
+
+        var ticks = [
+        {% for ins in i %}    
+            '{{ins.asesor}}',
+        {% endfor %} 
+        ];
+
+        
+        plot1 = $.jqplot('chart2', [s1], {
+            // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+            animate: !$.jqplot.use_excanvas,
+            seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                pointLabels: { show: true }
+            },
+            axes: {
+                xaxis: {
+                    renderer: $.jqplot.CategoryAxisRenderer,
+                    ticks: ticks
+                }
+            },
+            highlighter: { show: false }
+        });
+    
+        $('#chart2').bind('jqplotDataClick', 
+            function (ev, seriesIndex, pointIndex, data) {
+                $('#info1').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
+            }
+        );
+    });</script>
+
+
+{% endif %}
+
+
+{% if request.session.tipous == 3 %}
+
+
+
+
+    <script class="code" type="text/javascript">$(document).ready(function(){
+        $.jqplot.config.enablePlugins = true;
+        var s1 = [
+        {% for pr in i2 %}    
+            {{pr.cliente}},
+        {% endfor %} 
+        ];
+
+
+        var ticks = [
+        {% for ins in i2 %}    
+            '{{ins.asesor}}',
+        {% endfor %} 
+        ];
+
+        
+        plot1 = $.jqplot('chart2', [s1], {
+            // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+            animate: !$.jqplot.use_excanvas,
+            seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                pointLabels: { show: true }
+            },
+            axes: {
+                xaxis: {
+                    renderer: $.jqplot.CategoryAxisRenderer,
+                    ticks: ticks
+                }
+            },
+            highlighter: { show: false }
+        });
+    
+        $('#chart2').bind('jqplotDataClick', 
+            function (ev, seriesIndex, pointIndex, data) {
+                $('#info22').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
+            }
+        );
+    });</script>
+
+
+<script class="code" type="text/javascript">$(document).ready(function(){
+        $.jqplot.config.enablePlugins = true;
+        var s1 = [
+        {% for pr in i %}    
+            {{pr.cliente}},
+        {% endfor %} 
+        ];
+
+
+        var ticks = [
+        {% for ins in i %}    
+            '{{ins.dia}}',
+        {% endfor %} 
+        ];
+
+        
+        plot1 = $.jqplot('chart1', [s1], {
+            // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+            animate: !$.jqplot.use_excanvas,
+            seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                pointLabels: { show: true }
+            },
+            axes: {
+                xaxis: {
+                    renderer: $.jqplot.CategoryAxisRenderer,
+                    ticks: ticks
+                }
+            },
+            highlighter: { show: false }
+        });
+    
+        $('#chart1').bind('jqplotDataClick', 
+            function (ev, seriesIndex, pointIndex, data) {
+                $('#info1').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
+            }
+        );
+    });</script>
+  
+{% endif %}
+
+
+
+{% if msncliente %}
+<script type="text/javascript">
+
+$(document).ready(
+    function(){
+
+            $(window).load(function() {
+            var unique_id = $.gritter.add({
+                // (string | mandatory) the heading of the notification
+                title: 'Esta es un noticia!!!',
+                // (string | mandatory) the text inside the notification
+                text: 'Este cliente actualmente se encuentra en efectivo teniendo la cantidad cubierta para pasar a inscrito, de clic  <a href="/cliente-inscrito-a/{{clien.user_id}}" style="color:#ccc">aquí</a> para pasarlo a inscrito.',
+                // (string | optional) the image to display on the left
+                image: '/static/images/notification-thumb.png',
+                // (bool | optional) if you want it to fade out on its own or just sit there
+                sticky: false,
+                // (int | optional) the time you want it to be alive for before fading out
+                time: '10000',
+                // (string | optional) the class name you want to apply to that specific message
+                class_name: 'my-sticky-class'
+            });
+            // You can have it return a unique id, this can be used to manually remove it later using
+            /*
+            setTimeout(function(){
+                $.gritter.remove(unique_id, {
+                    fade: true,
+                    speed: 'slow'
+                });
+            }, 6000)
+            */
+            return false;
+        });
+}); 
+
+</script>
+{% endif %}
+
+
+
+
+</head>
+<body>
+    
+{% block admin %}
+
+{%endblock%}
+
+</body>
+
+</html>
